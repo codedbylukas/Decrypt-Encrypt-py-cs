@@ -6,16 +6,6 @@ using System.Text;
 
 class SecureFileEncryption
 {
-    static void Main()
-    {
-        string filePath = "geheim.txt";
-        string userKey = "MeinSuperGeheimerKeyStream123456789";
-        string SaltString = "SecretSaltValue";
-
-        EncryptFileInPlace(filePath, userKey, SaltString);
-        Console.WriteLine("File is in-place encrypted. ");
-    }
-
     public static void EncryptFileInPlace(string path, string password, string SaltString)
     {
         byte[] salt = Encoding.UTF8.GetBytes("festerSaltWert");
