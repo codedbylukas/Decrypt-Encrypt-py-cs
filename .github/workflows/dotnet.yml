@@ -1,5 +1,5 @@
 name: .NET
-on: [push, pull_request]
+on: [ push, pull_request ]
 permissions:
   contents: read
 
@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
-        directory: [ ./cs/DecpyptFile, ./cs/EncpyptFile ]
+        os: [ ubuntu-latest, windows-latest, macos-latest, windows-2025-vs2026 ]
+        directory: [ ./cs/DecpyptFile, ./cs/EncpyptFile ./cs/ClearConsole ]
     
     # HIER DIE DEFAULT-EINSTELLUNG SETZEN:
     defaults:
