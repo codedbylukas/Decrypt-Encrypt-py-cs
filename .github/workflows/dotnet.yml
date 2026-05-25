@@ -16,7 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest, windows-2025-vs2026 ]
-
+        directory: [ ./cs/DecpyptFile, ./cs/EncpyptFile ]
+ 
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
@@ -25,6 +26,9 @@ jobs:
           dotnet-version: |
             6.0.x
             8.0.x
+      - name: Change Directory
+        run: cd ${{ matrix.directory }}
+
       - name: Restore dependencies
         run: dotnet restore
 
