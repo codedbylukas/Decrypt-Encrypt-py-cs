@@ -42,5 +42,5 @@ def ask_for_password() -> str:
 
 def ask_for_salt() -> str:
     """ Ask the user for a salt. """
-    salt = Prompt.ask("Enter the salt you want to use for encryption/decryption")
+    salt: str = Prompt.ask("Enter the salt you want to use for encryption/decryption")
     return salt
