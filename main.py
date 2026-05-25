@@ -1,5 +1,8 @@
 from pathlib import Path
 from rich.prompt import Confirm
+import signal
+
+signal.signal(signal.SIGINT, lambda sig, frame: print("\nExiting the program. Goodbye!") or exit(0))
 
 from cs.module import encrypt_file, decrypt_file
 from py_src.choice import ask_for_file_or_folder, ask_encryption_or_decryption, ask_for_password, ask_for_salt, ask_file_or_folder_file_path
