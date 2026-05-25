@@ -15,7 +15,7 @@ def ask_for_file_or_folder(is_file: bool) -> bool:
 
 def ask_encryption_or_decryption(encrypting: bool) -> bool:
     """ Ask the user which encryption method they want to use. """
-    choice = Prompt.ask("Which encryption method do you want to use?", choices=["encrypt", "enc", "decrypt", "dec"])
+    choice = Prompt.ask("Which operation do you want to perform?", choices=["encrypt", "enc", "decrypt", "dec"])
     if choice in ["encrypt", "enc"]:
         return True
     elif choice in ["decrypt", "dec"]:
@@ -34,6 +34,16 @@ def ask_file_or_folder_file_path() -> Path:
     else:
         return used_path
 
+def ask_for_multiprocessing() -> bool:
+    """ Ask the user if they want to use multiprocessing. """
+    choice = Prompt.ask("Do you want to use multiprocessing?", default="no", choices=["yes", "y", "no", "n"])
+    if choice == "yes" or choice == "y":
+        return True
+    elif choice == "no" or choice == "n":
+        return False
+    else:
+        print("Invalid choice. Please choose 'yes' or 'no'.")
+        return ask_for_multiprocessing()
 
 def ask_for_password() -> str:
     """ Ask the user for a password. """
