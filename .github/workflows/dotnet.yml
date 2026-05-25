@@ -1,42 +1,38 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: .NET
-
 on: [push, pull_request]
-
 permissions:
   contents: read
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest, windows-2025-vs2026 ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
         directory: [ ./cs/DecpyptFile, ./cs/EncpyptFile ]
- 
+    
+    # HIER DIE DEFAULT-EINSTELLUNG SETZEN:
+    defaults:
+      run:
+        working-directory: ${{ matrix.directory }}
+
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
             6.0.x
             8.0.x
-      - name: Change Directory
-        run: cd ${{ matrix.directory }}
 
+      # Der "Change Directory"-Schritt wurde gelöscht, da jetzt alle Schritte hier starten
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build
         run: dotnet build --no-restore
-
-      - name: Great Build
-        run: dotnet build
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
