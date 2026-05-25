@@ -11,4 +11,5 @@ if __name__ == "__main__":
     used_path = ask_file_or_folder_file_path()
     is_file = ask_for_file_or_folder(is_file)
     if encrypting:
-        encrypt_file(used_path, PASSWORD, SALT)
+        if is_file:
+            encrypt_file(used_path, PASSWORD, SALT)
