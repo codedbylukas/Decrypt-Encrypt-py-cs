@@ -1,3 +1,4 @@
+from genericpath import isfile
 from pathlib import Path
 from rich.prompt import Confirm
 import signal
@@ -7,7 +8,7 @@ signal.signal(signal.SIGINT, lambda sig, frame: print("\nExiting the program. Go
 
 from cs.module import encrypt_file, decrypt_file
 from py_src.choice import ask_for_file_or_folder, ask_encryption_or_decryption, ask_for_password, ask_for_salt, ask_file_or_folder_file_path
-from py_src.encrypt_folder import encrypt_folder
+from py_src.transform_folder import transform_folder
 
 PASSWORD: str = ask_for_password()
 SALT: str = ask_for_salt()
@@ -24,12 +25,12 @@ def main():
             if is_file:
                 encrypt_file(used_path, PASSWORD, SALT)
             elif not is_file:
-                encrypt_folder(used_path, PASSWORD, SALT)
+                transform_folder(used_path, PASSWORD, SALT, is_file)
         elif not encrypting: # Decrypting
             if is_file:
                 decrypt_file(used_path, PASSWORD, SALT)
             elif not is_file:
-                print("Folder decryption is not yet implemented.")    
+                transform_folder(used_path, PASSWORD, SALT, is_file)
         continue_choice = Confirm.ask("Do you want to continue?", default=True)
         if not continue_choice:
             print("Exiting the program. Goodbye!")
