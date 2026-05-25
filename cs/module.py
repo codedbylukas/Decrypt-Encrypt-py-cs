@@ -19,9 +19,9 @@ from SecureFileDecryptionNamespace import SecureFileDecryption
 
 def encrypt_file(file_path: Path, password: str, salt: str):
     try:
-        print("[*] Rufe C#-Verschlüsselung auf...")
+        print(f"[*] Start C#-Encryption process on file: {file_path}")
         SecureFileEncryption.EncryptFileInPlace(str(file_path), password, salt)
-        print("[+] Erfolgreich ausgeführt.")
+        print(f"[+] Successfully encrypted file: {file_path}")
     except KeyboardInterrupt:
         choice = Confirm.ask("Do you want to exit?")
         if choice:
@@ -34,9 +34,9 @@ def encrypt_file(file_path: Path, password: str, salt: str):
 
 def decrypt_file(file_path: Path, password: str, salt: str):
     try:
-        print("[*] Rufe C#-Entschlüsselung auf...")
+        print(f"[*] Start C#-Decryption process on file: {file_path}")
         SecureFileDecryption.DecryptFileInPlace(str(file_path), password, salt)
-        print("[+] Erfolgreich ausgeführt.")
+        print(f"[+] Successfully decrypted file: {file_path}")
     except KeyboardInterrupt:
         choice = Confirm.ask("Do you want to exit?")
         if choice:
