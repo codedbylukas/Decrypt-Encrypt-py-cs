@@ -1,6 +1,7 @@
 from pathlib import Path
 from rich.prompt import Confirm
 import signal
+from sys import exit
 
 signal.signal(signal.SIGINT, lambda sig, frame: print("\nExiting the program. Goodbye!") or exit(0))
 
