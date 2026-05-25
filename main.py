@@ -6,10 +6,21 @@ SALT = ask_for_salt()
 encrypting: bool = None
 is_file: bool = None
 
-if __name__ == "__main__":
+def main():
+    global encrypting, is_file
     encrypting = ask_encryption_or_decryption(encrypting)
     used_path = ask_file_or_folder_file_path()
     is_file = ask_for_file_or_folder(is_file)
     if encrypting:
         if is_file:
             encrypt_file(used_path, PASSWORD, SALT)
+        elif not is_file:
+            print("Folder encryption is not yet implemented.")
+    elif not encrypting:
+        if is_file:
+            print("File decryption is not yet implemented.")
+        elif not is_file:
+            print("Folder decryption is not yet implemented.")    
+
+if __name__ == "__main__":
+    main()
