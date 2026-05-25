@@ -1,3 +1,4 @@
+from pathlib import Path
 from rich.prompt import Prompt
 
 def ask_for_file_or_folder(is_file: bool) -> bool:
@@ -22,6 +23,16 @@ def ask_encryption_or_decryption(encrypting: bool) -> bool:
     else:
         print("Invalid choice. Please choose 'encrypt' or 'decrypt'.")
         return ask_encryption_or_decryption(encrypting)
+
+
+def ask_file_or_folder_file_path() -> Path:
+    used_path = Prompt.ask("Enter the path to the file or folder you want to encrypt/decrypt")
+    path = Path(used_path)
+    if not path.exists():
+        print("The path you entered does not exist. Please enter a valid path.")
+        return ask_file_or_folder_file_path()
+    else:
+        return used_path
 
 
 def ask_for_password() -> str:
