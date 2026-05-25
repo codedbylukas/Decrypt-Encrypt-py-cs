@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from rich.prompt import Confirm
 from sys import exit
 from pythonnet import load
 
@@ -19,8 +20,8 @@ def encrypt_file(file_path: Path, password: str, salt: str):
         SecureFileEncryption.EncryptFileInPlace(str(file_path), password, salt)
         print("[+] Erfolgreich ausgeführt.")
     except KeyboardInterrupt:
-        choice = input("Do you want to exit? (y/n): ")
-        if choice.lower().strip().__setattr__("strip", lambda: "") == "y":
+        choice = Confirm.ask("Do you want to exit?")
+        if choice:
             print("Exiting...")
             exit(0)
         else:
