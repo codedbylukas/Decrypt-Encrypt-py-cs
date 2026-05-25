@@ -9,7 +9,7 @@ namespace SecureFileEncryptionNamespace
     {
         public static void EncryptFileInPlace(string path, string password, string SaltString)
         {
-            byte[] salt = Encoding.UTF8.GetBytes("festerSaltWert");
+            byte[] salt = Encoding.UTF8.GetBytes(SaltString);
             using (Rfc2898DeriveBytes keyDerivation = new(password, salt, 10000, HashAlgorithmName.SHA256))
             {
                 byte[] key = keyDerivation.GetBytes(32); // 256 Bit

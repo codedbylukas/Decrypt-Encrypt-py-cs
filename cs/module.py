@@ -8,7 +8,7 @@ load("coreclr")
 import clr
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-dll_path = os.path.join(current_dir, "EncpyptFile.dll")
+dll_path = os.path.join(current_dir, "EncryptFile.dll")
 clr.AddReference(dll_path)
 
 from SecureFileEncryptionNamespace import SecureFileEncryption
