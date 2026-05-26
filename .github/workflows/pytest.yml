@@ -28,17 +28,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "pip" # Optional: Beschleunigt zukünftige Runs
+          cache: "pip"
 
       - name: Upgrade pip & install Build-Tools
-        run: |
-          python -m pip install --upgrade pip setuptools wheel
+        run: python -m pip install --upgrade pip setuptools wheel
 
-      # HIER KORRIGIERT: Numpy zuerst installieren, damit pydotnet darauf zugreifen kann
       - name: Install Dependencies
         run: |
           pip install numpy==2.4.6
-          pip install -r requirements.txt
+          pip install --no-build-isolation -r requirements.txt
 
       - name: Run Unit Tests
         run: pytest -v
