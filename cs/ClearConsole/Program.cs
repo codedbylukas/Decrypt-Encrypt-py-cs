@@ -7,7 +7,15 @@ namespace ClearNamespace
     {
         public static void ClearMethod()
         {
-            Console.Clear();
+            try
+            {
+                Console.Clear();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred while clearing console: {ex.Message}");
+                throw;
+            }
         }
     }
 }
