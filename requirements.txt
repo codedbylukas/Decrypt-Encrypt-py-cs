@@ -1,12 +1,17 @@
 cffi==2.0.0
 clr_loader==0.3.1
+execnet==2.1.2
+iniconfig==2.3.0
 markdown-it-py==4.2.0
 mdurl==0.1.2
 numpy==2.4.6
 packaging==26.2
+pluggy==1.6.0
 pycparser==3.0
 pydotnet==0.9.2
 Pygments==2.20.0
+pytest==9.0.3
+pytest-xdist==3.8.0
 pythonnet==3.1.0
 rich==15.0.0
 setuptools==82.0.1
