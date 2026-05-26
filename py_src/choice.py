@@ -13,7 +13,7 @@ def ask_for_file_or_folder(is_file: bool) -> bool:
         return False
     else:
         print("Invalid choice. Please choose 'file' or 'folder'.")
-        return ask_for_file_or_folder()
+        return ask_for_file_or_folder(is_file)
 
 
 def ask_encryption_or_decryption(encrypting: bool) -> bool:

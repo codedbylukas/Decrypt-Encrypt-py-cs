@@ -21,10 +21,13 @@ cs_module.decrypt_file = MagicMock()
 sys.modules["cs"] = cs_pkg
 sys.modules["cs.module"] = cs_module
 
-# ── 2. Mock the interactive prompt helpers so module-level calls in
-#       main.py return deterministic values without blocking on stdin ────────
-import py_src.choice as _choice  # noqa: E402
+# ── 2. Temporarily mock the interactive prompt helpers ONLY while main.py
+#       is imported, so its module-level calls don't block on stdin.
+#       After the import the originals are restored, so test_choice.py
+#       still sees real FunctionType objects. ─────────────────────────────────
+from unittest.mock import patch  # noqa: E402
 
-_choice.ask_for_password = MagicMock(return_value="test_password")
-_choice.ask_for_salt = MagicMock(return_value="test_salt")
-_choice.ask_for_multiprocessing = MagicMock(return_value=False)
+with patch("py_src.choice.ask_for_password", return_value="test_password"), \
+     patch("py_src.choice.ask_for_salt", return_value="test_salt"), \
+     patch("py_src.choice.ask_for_multiprocessing", return_value=False):
+    import main  # noqa: E402, F401  — triggers the module-level calls under mocks
