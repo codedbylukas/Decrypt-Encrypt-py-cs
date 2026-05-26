@@ -1,11 +1,16 @@
+black==26.5.1
 cffi==2.0.0
+click==8.4.1
 clr_loader==0.3.1
 execnet==2.1.2
 iniconfig==2.3.0
 markdown-it-py==4.2.0
 mdurl==0.1.2
+mypy_extensions==1.1.0
 numpy==2.4.6
 packaging==26.2
+pathspec==1.1.1
+platformdirs==4.9.6
 pluggy==1.6.0
 pycparser==3.0
 pydotnet==0.9.2
@@ -13,6 +18,7 @@ Pygments==2.20.0
 pytest==9.0.3
 pytest-xdist==3.8.0
 pythonnet==3.1.0
+pytokens==0.4.1
 rich==15.0.0
 setuptools==82.0.1
 wheel==0.47.0

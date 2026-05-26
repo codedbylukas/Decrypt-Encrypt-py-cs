@@ -36,6 +36,7 @@ def encrypt_file(file_path: Path, password: str, salt: str):
     except Exception as e:
         print(f"Error. This goes wrong: {e}")
 
+
 def decrypt_file(file_path: Path, password: str, salt: str):
     try:
         print(f"[*] Start C#-Decryption process on file: {file_path}")
@@ -50,6 +51,7 @@ def decrypt_file(file_path: Path, password: str, salt: str):
             print("Continuing execution...")
     except Exception as e:
         print(f"Error. This goes wrong: {e}")
+
 
 def clear():
     try:
