@@ -10,11 +10,15 @@ import clr
 current_dir = os.path.dirname(os.path.abspath(__file__))
 dll_path_enc = os.path.join(current_dir, "EncryptFile.dll")
 dll_path_dec = os.path.join(current_dir, "DecryptFile.dll")
+ddl_path_clearConsole = os.path.join(current_dir, "ClearConsole.dll")
+
 clr.AddReference(dll_path_enc)
 clr.AddReference(dll_path_dec)
+clr.AddReference(ddl_path_clearConsole)
 
 from SecureFileEncryptionNamespace import SecureFileEncryption
 from SecureFileDecryptionNamespace import SecureFileDecryption
+from ClearNamespace import ClearClass
 
 
 def encrypt_file(file_path: Path, password: str, salt: str):
@@ -44,5 +48,11 @@ def decrypt_file(file_path: Path, password: str, salt: str):
             exit(0)
         else:
             print("Continuing execution...")
+    except Exception as e:
+        print(f"Error. This goes wrong: {e}")
+
+def clear():
+    try:
+        ClearClass.ClearMethod()
     except Exception as e:
         print(f"Error. This goes wrong: {e}")
