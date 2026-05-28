@@ -10,6 +10,9 @@ class TestBasic:
     def test_get_all_files(self):
         assert callable(get_all_files)
         assert isinstance(get_all_files, FunctionType)
+    def test_process_list_exists(self):
+        assert process_list == []
+        assert isinstance(process_list, list)
 
 class TestImportetFunctions:
     def test_encrypt_file(self):
